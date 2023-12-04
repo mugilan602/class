@@ -11,13 +11,11 @@ dotenv.config();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
-console.log(process.env.port);
 const connection = mysql.createConnection({
   host: process.env.host, 
   user: process.env.user,
   password: process.env.password,
   database: process.env.database,
-  port: process.env.port
 });
 
 connection.connect((err) => {
@@ -57,8 +55,8 @@ app.post("/submit", (req, res) => {
   res.redirect("/");
 });
 
-  app.listen(3000 || process.env.port , () => {
-    console.log(`Listening on port ${process.env.port}`);
+  app.listen(3000, () => {
+    console.log(`Listening on port 3000`);
   });
   
 
